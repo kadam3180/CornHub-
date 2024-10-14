@@ -8,8 +8,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cornhub</title>
 
+    <script>
+        function start() {
+            // (PART A) GET SPLASH SCREEN 
+            let splash = document.getElementById("splash");
 
+            // (PART B) PLAY BGM & REMOVE SPLASH SCREEN AFTER FADE IN
+            splash.addEventListener("transitionend", () => {
+                document.getElementById("bgm").play();
+                splash.remove();
+            });
+
+            // (PART C) GO!
+            splash.classList.add("hide");
+        }
+    </script>
     <style>
+        /* (PART A) SPLASH SCREEN */
+        #splash {
+            /* (A1) FULLSCREEN */
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            width: 100vw;
+            height: 100vh;
+
+            /* (A2) CENTER */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            /* (A3) COSMETICS */
+            font-size: 24px;
+            color: #fff;
+            background: #000;
+        }
+
+        /* (A4) TO HIDE THE SPLASH SCREEN */
+        #splash.hide {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 1s;
+        }
+
+        /* NOT IMPORTANT - COSMETICS */
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+            box-sizing: border-box;
+        }
+
         body {
             background-image: url("OIP.jfif");
             cursor: url('corn cursor.png'), auto;
@@ -58,7 +106,11 @@
 </head>
 
 <body>
+    <!-- (PART A) SPLASH SCREEN -->
+    <div id="splash" onclick="start()">&#127929; Click to start!</div>
 
+    <!-- (PART B) BGM -->
+    <audio id="bgm" src="adamtheboyhard.mp3" loop></audio>
 
 
     <ul>
@@ -70,13 +122,6 @@
         <li><a href="LoC.html">Leauge of Corn</a></li>
 
     </ul>
-    <center>
-        <audio controls autoplay>
-            <source src="adamtheboyhard.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
-    </center>
-
 
 </body>
 
